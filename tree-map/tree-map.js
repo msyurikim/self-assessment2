@@ -40,14 +40,16 @@ Tree.prototype.addChild = function(value) {
 }
 
 Tree.prototype.map = function(callback) {
-  var addedTree = new Tree(this.value);
-  addedTree.value = callback(this.value);
-  //addedTree.children = this.children;
-  //addedTree.children = [];
-  for (var i = 0; i < this.children.length; i++) {
-    var childTree = this.children[i].map(callback);
-    addedTree.children.push(childTree);
-  }
+  //var addedTree = new Tree(this.value);
+  //addedTree.value = callback(this.value);
+  var addedTree = new Tree(callback(this.value));
+  // for (var i = 0; i < this.children.length; i++) {
+  //   //addedTree.children[i].value = callback(this.children[i].value); //works, but not for nested
+  //   addedTree.children[i] = this.children[i].map(callback);
+  //   //var childTree = this.children[i].map(callback);
+  //   //addedTree.children.push(childTree);
+  // }
+
   return addedTree;
 }
 
